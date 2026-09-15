@@ -13,7 +13,7 @@ const MONGO_PORT = process.env.MONGO_PORT || '27017';
 const MONGO_DB = process.env.MONGO_DB || 'notesdb';
 
 const MONGO_URI = MONGO_USER && MONGO_PASSWORD
-  ? `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}`
+  ? `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`
   : `mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}`;
 
 mongoose.connect(MONGO_URI)
