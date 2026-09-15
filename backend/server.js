@@ -6,7 +6,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/notesdb';
+const MONGO_USER = process.env.MONGO_USER;
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
+const MONGO_HOST = process.env.MONGO_HOST || 'localhost';
+const MONGO_PORT = process.env.MONGO_PORT || '27017';
+const MONGO_DB = process.env.MONGO_DB || 'notesdb';
+
+const MONGO_URI = MONGO_USER && MONGO_PASSWORD
+  ? `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}`
+  : `mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}`;
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
