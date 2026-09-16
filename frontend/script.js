@@ -1,4 +1,4 @@
-const API_URL = 'http://BACKEND_URL_PLACEHOLDER/api/notes';
+const API_URL = 'http://192.168.249.133:30500/api/notes';
 
 async function loadNotes() {
   const res = await fetch(API_URL);
